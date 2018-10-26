@@ -29,7 +29,7 @@ let redisURL = {
 
 let redisPASS;
 
-if(process.env.REDISCLOUD_URL){
+if (process.env.REDISCLOUD_URL) {
   redisURL = url.parse(process.env.REDISCLOUD_URL);
   redisPASS = redisURL.auth.split(':')[1];
 }
@@ -65,9 +65,9 @@ app.use(cookieParser());
 
 app.use(csrf());
 app.use((err, req, res, next) => {
-  if(err.code != "EBADCSRFTOKEN") return next(err);
+  if (err.code !== 'EBADCSRFTOKEN') return next(err);
 
-  console.log("Missing CSRF token");
+  console.log('Missing CSRF token');
   return false;
 });
 
